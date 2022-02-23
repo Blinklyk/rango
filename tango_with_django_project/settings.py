@@ -12,28 +12,27 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# use method to get path
+# static_dir for upload picture
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [STATIC_DIR]
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
-MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = '/media/'
 
-# Quick-start development settings - unsuitable for production
+
+
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'g69lu1$=cd57p_0+@xoxtzj(1rden$%q0nh&p$m737y(z%ub*7'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = 'ui0l(4+4mr*%y&eof5(2pk=li=sbbe=ph!+9j_v-v0q^$eo-g_'
+
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
 
-# Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -60,9 +59,10 @@ ROOT_URLCONF = 'tango_with_django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [TEMPLATE_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
+#        include media
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -77,7 +77,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
 
-# Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
@@ -88,7 +87,6 @@ DATABASES = {
 }
 
 
-# Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -107,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
@@ -120,8 +117,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
 STATIC_URL = '/static/'
+# static file path
+STATICFILES_DIRS = [STATIC_DIR, ]
+
+#media file‘s URL and root
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+
+
